@@ -11,8 +11,7 @@ LL::LL(){
 LL::~LL(){
      theater* t=hol;
      theater* temp;
-     int i;
-     for(i=0;i<size;i++){
+     for(int i=0;i<size;i++){
           temp = t;
           t=t->move_next();
           delete temp;

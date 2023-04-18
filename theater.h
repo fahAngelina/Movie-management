@@ -5,13 +5,13 @@ using namespace std;
 
 class theater{
 private:
-    seat* hol;
+    seat* hol_seat;
+    delux_seat* hol_delux_seat;
+    sofa_seat* hol_sofa_seat;
     string movie_name;
-    int size;
     float time;
     int theater_number;
     theater* next;
-    //Node seat;
 public:
     theater(string="theater",float=0.00,int=0);
     string display_name();
@@ -21,7 +21,11 @@ public:
     theater* move_next();
     void show_node();
     void show_all();
-    void add_node(seat*&);
-    seat* get_head();
+    void add_node_seat(seat*&);
+    void add_node_delux_seat(delux_seat *&);
+    void add_node_sofa_seat(sofa_seat *&);
+    seat* get_head_seat();
+    delux_seat* get_head_delux_seat();
+    sofa_seat* get_head_sofa_seat();
     ~theater();
 };
