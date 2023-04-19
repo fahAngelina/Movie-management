@@ -8,7 +8,7 @@ theater::theater(string a,float b,int c){
 }
 
 theater::~theater(){
-    cout<<"Deconstructing theater : "<<theater_number<<endl;
+    //cout<<"Deconstructing theater : "<<theater_number<<endl;
     seat* a=hol_seat;
     seat* temp_seat;
     delux_seat* b=hol_delux_seat;
@@ -51,7 +51,7 @@ theater* theater::move_next(){
 }
 
 void theater::show_node(){
-    cout<<"Theater : "<<theater_number<<" Movie name : "<<movie_name<<" Show time : "<<fixed<<setprecision(2)<<time<<endl;
+    cout<<" Movie name : "<<movie_name<<" , show time : "<<fixed<<setprecision(2)<<time<<" (theater "<<theater_number<<")"<<endl;
 }
 
 void theater::insert(theater*& x){

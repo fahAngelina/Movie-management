@@ -4,10 +4,10 @@ using namespace std;
 
 class seat{
 private:
+    seat* next;
+protected:
     bool stats;
     int seat_number;
-    seat* next;
-    //Node seat;
 public:
     seat(int=0);
     bool display_stats();
@@ -31,7 +31,7 @@ public :
         return next;
     }
     void insert_delux_seat(delux_seat*& x){
-      x->next=this;
+        x->next=this;
     }
     ~delux_seat();
 };
@@ -48,7 +48,7 @@ public :
         return next;
     }
     void insert_sofa_seat(sofa_seat*& x){
-      x->next=this;
+        x->next=this;
     }
     ~sofa_seat();
 };

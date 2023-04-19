@@ -6,7 +6,7 @@ seat::seat(int a){
 }
 
 seat::~seat(){
-    cout<<"Deconstructing seat : "<<seat_number<<endl;
+    //cout<<"Deconstructing seat : "<<seat_number<<endl;
 }
 
 int seat::display_seat_number(){
