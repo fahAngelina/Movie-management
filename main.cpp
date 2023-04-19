@@ -7,12 +7,15 @@
 using namespace std;
 
 int main(int argc, char *argv[]){
+    //create pointer for all type
     LL A;
     theater* t;
     seat* s;
+    // create LL theater
     for(int i=1;i<argc;i+=3) {
         t=new theater(argv[i],atof(argv[i+1]),atoi(argv[i+2]));
         A.add_node(t);
+        //create LLs seat in theater
         for(int j=55;j>0;j--){
             if(j<=40)
                 s=new seat(j);

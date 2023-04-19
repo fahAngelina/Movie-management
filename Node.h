@@ -2,6 +2,7 @@
 
 using namespace std;
 
+//Super class seat
 class seat{
 protected:
     bool stats;
@@ -18,6 +19,7 @@ public:
     virtual ~seat();
 };
 
+//class delux seat that inheritance from Super class
 class delux_seat:public seat{
 public :
     int return_price(){
@@ -27,6 +29,7 @@ public :
     ~delux_seat();
 };
 
+//class sofa seat that inheritance from Super class
 class sofa_seat:public seat{
 public :
     int return_price(){
