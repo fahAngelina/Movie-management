@@ -6,7 +6,7 @@ seat::seat(int a){
 }
 
 seat::~seat(){
-    //cout<<"Deconstructing seat : "<<seat_number<<endl;
+    //cout<<"Destruct seat : "<<seat_number<<endl;
 }
 
 int seat::display_seat_number(){
@@ -18,7 +18,7 @@ seat* seat::move_next(){
 }
 
 void seat::show_node(){
-    cout<<"seat : "<<endl;
+    cout<<"seat : "<<seat_number<<endl;
 }
 
 void seat::insert_seat(seat*& x){
@@ -33,6 +33,10 @@ delux_seat::delux_seat(int a):seat(a){};
 
 sofa_seat::sofa_seat(int a):seat(a){};
 
-delux_seat::~delux_seat(){};
+delux_seat::~delux_seat(){
+    //cout<<"Destruct delux seat : "<<seat_number<<endl;
+};
 
-sofa_seat::~sofa_seat(){};
+sofa_seat::~sofa_seat(){
+    //cout<<"Destruct sofa seat : "<<seat_number<<endl;
+};

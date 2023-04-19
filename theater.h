@@ -21,11 +21,7 @@ public:
     theater* move_next();
     void show_node();
     void show_all();
-    void add_node_seat(seat*&);
-    void add_node_delux_seat(delux_seat *&);
-    void add_node_sofa_seat(sofa_seat *&);
+    void add_node(seat*&);
     seat* get_head_seat();
-    delux_seat* get_head_delux_seat();
-    sofa_seat* get_head_sofa_seat();
     ~theater();
 };
