@@ -39,7 +39,11 @@ int main(int argc, char *argv[]){
         cout<<"| |_) | | | | |_) |   | | | |_| |  _|   / _ \\ | | |  _| | |_) | "<<endl;
         cout<<"|  __/| |_| |  __/    | | |  _  | |___ / ___ \\| | | |___|  _ <  "<<endl;
         cout<<"|_|    \\___/|_|       |_| |_| |_|_____/_/   \\_\\_| |_____|_| \\_\\ "<<endl;          
-        A.show_all();                                                                                                  
+        A.show_all();     
+        cout<<"1. Buy ticket"<<endl;
+        cout<<"2. Avaliable seat"<<endl;
+        cout<<"3. Promotion"<<endl; 
+        cout<<"4. exit"<<endl;                                                                                            
         switch(receive_input()){
             case 1:
                 break;
