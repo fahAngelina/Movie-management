@@ -42,7 +42,8 @@ theater* theater::move_next(){
 
 //show current node
 void theater::show_node(){
-    cout<<" Movie name : "<<movie_name<<" , show time : "<<fixed<<setprecision(2)<<time<<" (theater "<<theater_number<<")"<<endl;
+    cout<<" Movie name : "<<movie_name<<" , show time : "<<fixed<<setprecision(2)
+    <<time<<" (theater "<<theater_number<<")"<<endl;
 }
 
 //insert node

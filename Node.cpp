@@ -33,7 +33,7 @@ void seat::insert_seat(seat*& x){
 
 //return seat price
 int seat::return_price(){
-    return 100;
+    return 150;
 }
 
 //delux seat constructor

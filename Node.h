@@ -23,7 +23,7 @@ public:
 class delux_seat:public seat{
 public :
     int return_price(){
-        return 150;
+        return 200;
     }
     delux_seat(int=0);
     ~delux_seat();
@@ -33,7 +33,7 @@ public :
 class sofa_seat:public seat{
 public :
     int return_price(){
-        return 150;
+        return 500;
     }
     sofa_seat(int=0);
     ~sofa_seat();
