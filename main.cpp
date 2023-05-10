@@ -6,12 +6,14 @@
 
 using namespace std;
 
-int receive_input(int,int,int);
-void show_pop(),show_list(),center_text(string),select_seat(theater*),display_seat(seat*);
+int receive_input_int(int,int,int);
+char receive_input_char();
+void show_pop(),show_list(),center_text(string),select_seat(theater*),display_seat(seat*,theater*),avaliable_seat(theater*);
 theater* select_movie(theater*,int);
 
 int main(int argc, char *argv[]){
     //create pointer for all type
+    system("Color 09");
     int flag;
     LL A;
     theater* t;
@@ -35,16 +37,17 @@ int main(int argc, char *argv[]){
     do{
         flag=1;
         show_pop();         
-        cout<<endl<<"----------------------------------------------------------------------------------------------------------------"<<endl;   
+        cout<<"----------------------------------------------------------------------------------------------------------------"<<endl;   
         center_text("|| Movie List ||");      
-        cout<<endl<<"----------------------------------------------------------------------------------------------------------------"<<endl;   
+        cout<<"----------------------------------------------------------------------------------------------------------------"<<endl;   
         A.show_all();   
         show_list();                                                                    
-        switch(receive_input(1,4,1)){
+        switch(receive_input_int(1,4,1)){
             case 1:
                 select_seat(select_movie(A.get_head(),A.get_size()));
                 break;
             case 2:
+                avaliable_seat(select_movie(A.get_head(),A.get_size()));
                 break;
             case 3:
                 break;
@@ -76,27 +79,48 @@ void show_pop(){
 
 //show list
 void show_list(){
-    cout<<endl<<"----------------------------------------------------------------------------------------------------------------"<<endl;   
+    cout<<"----------------------------------------------------------------------------------------------------------------"<<endl;   
     center_text("|| Main Menu ||");
-    cout<<endl<<"----------------------------------------------------------------------------------------------------------------"<<endl;   
+    cout<<"----------------------------------------------------------------------------------------------------------------"<<endl;   
     center_text("1. Buy ticket");
     center_text("2. Avaliable seat");
     center_text("3. Promotion");
     center_text("4. exit");
-    cout<<endl<<"----------------------------------------------------------------------------------------------------------------"<<endl; 
+    cout<<"----------------------------------------------------------------------------------------------------------------"<<endl; 
 }
 
-//receive userinput with exception
-int receive_input(int con1,int con2,int con3){
+//receive userinput(char) with exception
+char receive_input_char(){
+    int a=0;
+    char x;
+    do{
+		try{
+			cout<<"Select Seat(alphabet,number) :";
+			cin>>x;
+			a=0;
+			if(!isalpha(x))
+				throw cin_fail;
+            x=toupper(x);
+			if(x>='H' && x<='Z')
+				throw outof_alphabet;
+		}
+		catch(exception& e){
+			cout<<e.what()<<endl;
+			a=1;
+		}
+	}while(a);
+    return x;
+}
+
+//receive userinput(int) with exception
+int receive_input_int(int con1,int con2,int con3){
     int x,a=0;
     do{
 		try{
             if(con3 == 1)
-			    cout<<"Select option number :"<<endl;
-            if(con3 == 2)
-                cout<<"Select Movie number :"<<endl;
-            if(con3 == 3)
-                cout<<"Select Seat number :"<<endl;
+			    cout<<"Select option number :";
+            else if(con3 == 2)
+                cout<<"Select Movie number :";
 			cin>>x;
 			a=0;
 			if(cin.fail())
@@ -115,11 +139,9 @@ int receive_input(int con1,int con2,int con3){
 //select movie
 theater* select_movie(theater* a ,int b){
     int movie_number;
-    movie_number = b-receive_input(1,b,2)+1;
+    movie_number = b-receive_input_int(1,b,2)+1;
     for(int i = 1;i<=movie_number;i++){
-        if(i == movie_number){
-            show_pop();        
-            center_text(a->display_name());
+        if(i == movie_number){       
             break;
         }
         a=a->move_next();
@@ -129,15 +151,57 @@ theater* select_movie(theater* a ,int b){
 
 //select seat and reserved it
 void select_seat(theater* t){
-    int seat_number;
+    flag1:
+    int z=0,seat_number=0;
+    char x;
     seat* s;
     s = t->get_head_seat();
-    display_seat(s);
-    seat_number = receive_input(1,60,3);
+    display_seat(s,t);
+    x=receive_input_char();
+    switch(x){
+        case 'A':
+            z=receive_input_int(1,10,0);
+            seat_number=z;
+            break;
+        case 'B':
+            z=receive_input_int(1,10,0);
+            seat_number=10+z;
+            break;
+        case 'C':
+            z=receive_input_int(1,10,0);
+            seat_number=20+z;
+            break;
+        case 'D':
+            z=receive_input_int(1,10,0);
+            seat_number=30+z;
+            break;
+        case 'E':
+            z=receive_input_int(1,8,0);
+            seat_number=40+z;
+            break;
+        case 'F':
+            z=receive_input_int(1,7,0);
+            seat_number=48+z;
+            break;
+        case 'G':
+            z=receive_input_int(1,5,0);
+            seat_number=55+z;
+            break;
+        default:
+            cout<<"Error!!"<<endl;
+    }
     for(int i = 1;i<=seat_number;i++){
         if(i == seat_number){
-            cout<<"buy seat : "<<s->display_seat_number()<<endl;
-            s->change_stats();
+            if(s->display_stats()){
+                cout<<"Reserve Seat : "<<x<<z<<endl;
+                s->change_stats();
+            }
+            else{
+                cout<<"This seat is reserved"<<endl;+
+                system("PAUSE");
+                system("CLS");
+                goto flag1;
+            }
             break;
         }
         s=s->move_next();
@@ -146,8 +210,10 @@ void select_seat(theater* t){
 }
 
 //display seat
-void display_seat(seat* s){
+void display_seat(seat* s,theater* t){
     //display seat
+    show_pop();
+    center_text(t->display_name());
     center_text("________________________________");
     for(int i=1;i<=40;i++){
         switch(i){
@@ -165,9 +231,9 @@ void display_seat(seat* s){
                 break;
         }
         if(s->display_stats())
-            cout<<"O  ";
+            cout << "\033[96m" <<"O  "<< "\033[94m";
         else
-            cout<<"X  ";
+            cout << "\033[91m" <<"X  "<< "\033[94m";
         if(i==40)
             cout<<" D"<<endl;
         s=s->move_next();
@@ -180,15 +246,15 @@ void display_seat(seat* s){
             cout<<"E"<<endl<<"                                       F     ";
         if(s->display_stats()){
             if(i==8)
-                cout<<"O  ";
+                cout << "\033[36m" <<"O  "<< "\033[94m";
             else
-                cout<<"O   ";
+                cout << "\033[36m" <<"O   "<< "\033[94m";
         }
         else{
             if(i==8)
-                cout<<"X  ";
+                 cout << "\033[91m" <<"X  "<< "\033[94m";
             else
-                cout<<"X   ";
+                 cout << "\033[91m" <<"X   "<< "\033[94m";
         }
         if(i==15)
             cout<<" F"<<endl;
@@ -199,12 +265,19 @@ void display_seat(seat* s){
         if(i == 1)
             cout<<endl<<"                                       G    ";
         if(s->display_stats())
-            cout<<"OO    ";
+            cout << "\033[34m" <<"OO    "<< "\033[94m";
         else
-            cout<<"XX    ";
+            cout << "\033[91m" <<"XX    "<< "\033[94m";
         if(i==5)
             cout<<"G"<<endl;
         s=s->move_next();
     }
     cout<<endl<<endl;
+}
+
+void avaliable_seat(theater* t){
+    seat* s;
+    s=t->get_head_seat();
+    display_seat(s,t);
+    system("PAUSE");
 }

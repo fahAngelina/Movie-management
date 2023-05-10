@@ -12,9 +12,16 @@ public:
     }
 } cin_fail;
 
-class check_0:public exception{
+class check_range:public exception{
 public:
     const char* what() const throw(){
-        return "Plase enter number in option";
+        return "Plase enter number in range";
     }
 } outof_range;
+
+class check_char:public exception{
+public:
+    const char* what() const throw(){
+        return "Plase enter alphabet A-G";
+    }
+} outof_alphabet;
