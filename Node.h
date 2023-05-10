@@ -16,6 +16,7 @@ public:
     int return_price();
     seat* move_next();
     void show_node();
+    void change_stats();
     virtual ~seat();
 };
 

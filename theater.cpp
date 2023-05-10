@@ -13,7 +13,7 @@ theater::~theater(){
     //cout<<"Deconstructing theater : "<<theater_number<<endl;
     seat* t=hol_seat;
     seat* temp_seat;
-    for(int i=1;i<=55;i++){
+    for(int i=1;i<=60;i++){
         temp_seat = t;
         t=t->move_next();
         delete temp_seat;
@@ -41,9 +41,12 @@ theater* theater::move_next(){
 }
 
 //show current node
-void theater::show_node(){
-    cout<<" Movie name : "<<movie_name<<" , show time : "<<fixed<<setprecision(2)
-    <<time<<" (theater "<<theater_number<<")"<<endl;
+void theater::show_node(int i){
+    stringstream ss;
+    ss<<fixed<<setprecision(2)<<time;
+    string var = to_string(i)+". Movie name : "+movie_name+" , show time : "
+    +ss.str()+" (theater "+to_string(theater_number)+")";
+    cout<<setw((115/2)+(var.size()/2))<<var<<endl;
 }
 
 //insert node

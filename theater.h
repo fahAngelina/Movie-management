@@ -6,8 +6,6 @@ using namespace std;
 class theater{
 private:
     seat* hol_seat;
-    delux_seat* hol_delux_seat;
-    sofa_seat* hol_sofa_seat;
     string movie_name;
     float time;
     int theater_number;
@@ -19,7 +17,7 @@ public:
     int display_theater_number();
     void insert(theater*&);
     theater* move_next();
-    void show_node();
+    void show_node(int);
     void show_all();
     void add_node(seat*&);
     seat* get_head_seat();

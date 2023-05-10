@@ -11,6 +11,11 @@ seat::~seat(){
     //cout<<"Destruct seat : "<<seat_number<<endl;
 }
 
+//return seat stats
+bool seat::display_stats(){
+    return stats;
+}
+
 //return seat number
 int seat::display_seat_number(){
     return seat_number;
@@ -19,6 +24,14 @@ int seat::display_seat_number(){
 //next Ptr
 seat* seat::move_next(){
     return next;
+}
+
+//change seat stats
+void seat::change_stats(){
+    if(stats)
+        stats=false;
+    else
+        stats=true;
 }
 
 //show current node

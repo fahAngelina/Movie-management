@@ -25,8 +25,7 @@ LL::~LL(){
 void LL::show_all(){
      theater* t=hol;
      for(int i=1;i<=size;i++){
-          cout<<i<<". ";
-          t->show_node();
+          t->show_node(i);
           t=t->move_next();
      }
 }
