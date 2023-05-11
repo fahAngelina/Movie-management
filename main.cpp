@@ -14,6 +14,7 @@ void cancel_reservation(seat*),payment(seat*,theater*),reservation(seat*),random
 theater* select_movie(theater*,int);
 
 bool devmode=true;
+
 int main(int argc, char *argv[]){
     //create pointer for all type
     srand((unsigned) time(NULL)); 
@@ -429,7 +430,7 @@ void payment(seat* s,theater* t){
         center_text("Thank You");
     }
     else{
-        var = "Change "+to_string(money-price_seat+price_delux+price_sofa);
+        var = "Change "+to_string(money-(price_seat+price_delux+price_sofa));
         center_text(var);
         center_text("Thank You");
     }
