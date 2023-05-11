@@ -3,6 +3,7 @@
 //seat constructor
 seat::seat(int a){
     seat_number = a;
+    reserve_stats = true;
     stats = true;
 }
 
@@ -11,9 +12,19 @@ seat::~seat(){
     //cout<<"Destruct seat : "<<seat_number<<endl;
 }
 
+//return seat type(1=seat,2=delux,3=sofa)
+int seat::display_seat_type(){
+        return 1;
+}
+
 //return seat stats
 bool seat::display_stats(){
     return stats;
+}
+
+//return seat reserve stats
+bool seat::display_reserve_stats(){
+    return reserve_stats;
 }
 
 //return seat number
@@ -24,6 +35,14 @@ int seat::display_seat_number(){
 //next Ptr
 seat* seat::move_next(){
     return next;
+}
+
+////change seat reserve stats
+void seat::change_reserve_stats(){
+    if(reserve_stats)
+        reserve_stats=false;
+    else
+        reserve_stats=true;
 }
 
 //change seat stats

@@ -15,6 +15,8 @@ public:
 class check_range:public exception{
 public:
     const char* what() const throw(){
+        cin.clear();
+		cin.ignore(50,'\n');
         return "Plase enter number in range";
     }
 } outof_range;
@@ -22,6 +24,8 @@ public:
 class check_char:public exception{
 public:
     const char* what() const throw(){
+        cin.clear();
+		cin.ignore(50,'\n');
         return "Plase enter alphabet A-G";
     }
 } outof_alphabet;
