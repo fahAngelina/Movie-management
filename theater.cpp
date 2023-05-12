@@ -41,15 +41,6 @@ theater* theater::move_next(){
 }
 
 //show current node
-/*void theater::show_node(int i){
-    stringstream ss;
-    ss<<fixed<<setprecision(2)<<time;
-    string var = to_string(i)+". Movie name : "+movie_name+" , show time : "
-    +ss.str()+" (theater "+to_string(theater_number)+")";
-    cout<<setw((130/2)+(var.size()/2))<<var<<endl;
-}*/
-
-//show current node
 void theater::show_node(int i){
     stringstream ss;
     cout<<setw((38)+(movie_name.size()/2))<<movie_name;
