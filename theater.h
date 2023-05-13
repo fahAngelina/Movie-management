@@ -18,7 +18,6 @@ public:
     void insert(theater*&);
     theater* move_next();
     void show_node(int);
-    void show_all();
     void add_node(seat*&);
     seat* get_head_seat();
     ~theater();

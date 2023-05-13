@@ -40,19 +40,7 @@ theater* theater::move_next(){
     return next;
 }
 
-//show current node
-void theater::show_node(int i){
-    stringstream ss;
-    cout<<setw((38)+(movie_name.size()/2))<<movie_name;
-    ss<<fixed<<setprecision(2)<<time;
-    if(movie_name.size()%2==1 && (movie_name.size()==5 || movie_name.size()==7))
-        cout<<" ";
-    for(int i=1;(i<19/movie_name.size()+12);i++){
-        cout<<" ";
-    }
-    string var = ss.str()+"               "+to_string(theater_number);
-    cout<<var<<endl;
-}
+
 //insert node
 void theater::insert(theater*& x){
     x->next=this;
@@ -68,3 +56,15 @@ void theater::add_node(seat *&A){
 seat* theater::get_head_seat(){
      return hol_seat;
 }
+void theater::show_node(int i){
+    stringstream ss;
+    cout<<setw((38)+(movie_name.size()/2))<<movie_name;
+    ss<<fixed<<setprecision(2)<<time;
+    if(movie_name.size()%2==1 && (movie_name.size()==5 || movie_name.size()==7))
+        cout<<" ";
+    for(int i=1;(i<19/movie_name.size()+12);i++){
+        cout<<" ";
+    }
+    string var = ss.str()+"               "+to_string(theater_number);
+    cout<<var<<endl;
+}       
