@@ -451,7 +451,7 @@ void payment(seat* s,theater* t){
     cout<<setw(15)<<discount<<endl;
     cout<<"                                         Total            "; 
     cout<<setw(15)<<totalprice-discount<<endl<<endl;
-
+    totalprice=totalprice-discount;
     cout<<"----------------------------------------------------------------------------------------------------------------"<<endl; 
     int money=0;
     do{
