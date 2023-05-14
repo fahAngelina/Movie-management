@@ -367,11 +367,10 @@ void reservation(seat* s){
 //user payment
 void payment(seat* s,theater* t){
     int discount=0;
-    int result=0,seat=0,delux=0,sofa=0;
+    int seat=0,delux=0,sofa=0;
     int price_seat=0,price_delux=0,price_sofa=0,totalprice;
     for(int i=1;i<=60;i++){
         if(!s->display_reserve_stats()){
-            result+= s->return_price();
             switch(s->display_seat_type()){
                 case 1:
                     seat++;
@@ -394,7 +393,7 @@ void payment(seat* s,theater* t){
     string ans,dc;
     bool flag;
     do{
-        flag=false;
+        flag=true;
         system("CLS");
         show_pop();
         display_seat(t->get_head_seat(),t);
@@ -415,6 +414,8 @@ void payment(seat* s,theater* t){
                 flag=true;
             }
         }
+        else if(ans=="NO")
+             flag=false;
     }while(flag);
     
     system("CLS");
@@ -459,7 +460,7 @@ void payment(seat* s,theater* t){
         money = receive_input_int(0,50000,0);
     }while(money<totalprice && money!=0);
     cout<<"----------------------------------------------------------------------------------------------------------------"<<endl; 
-    if(money <= 0){
+    if(money == 0){
         cancel_reservation(t->get_head_seat());
     }
     else if(money == totalprice){
