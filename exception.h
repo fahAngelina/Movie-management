@@ -17,7 +17,7 @@ public:
     const char* what() const throw(){
         cin.clear();
 		cin.ignore(50,'\n');
-        return "Plase enter number in range";
+        return "Please enter number in range";
     }
 } outof_range;
 
@@ -26,6 +26,6 @@ public:
     const char* what() const throw(){
         cin.clear();
 		cin.ignore(50,'\n');
-        return "Plase enter alphabet A-G";
+        return "Please enter alphabet A-G";
     }
 } outof_alphabet;
