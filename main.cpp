@@ -407,6 +407,7 @@ void payment(seat* s,theater* t){
                 cout<<"You got 100 discount"<<endl;
                 system("PAUSE");
                 discount=100;
+                flag=false;
             }
             else{
                 cout<<"Wrong Code"<<endl;
